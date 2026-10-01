@@ -1,3 +1,40 @@
+```text
+██████╗ ██╗ █████╗  ██████╗ ██████╗  █████╗ ███╗   ███╗
+██╔══██╗██║██╔══██╗██╔════╝ ██╔══██╗██╔══██╗████╗ ████║
+██║  ██║██║███████║██║  ███╗██████╔╝███████║██╔████╔██║
+██║  ██║██║██╔══██║██║   ██║██╔══██╗██╔══██║██║╚██╔╝██║
+██████╔╝██║██║  ██║╚██████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║
+╚═════╝ ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝
+
+██████╗ ███████╗███████╗██╗ ██████╗ ███╗   ██╗
+██╔══██╗██╔════╝██╔════╝██║██╔════╝ ████╗  ██║
+██║  ██║█████╗  ███████╗██║██║  ███╗██╔██╗ ██║
+██║  ██║██╔══╝  ╚════██║██║██║   ██║██║╚██╗██║
+██████╔╝███████╗███████║██║╚██████╔╝██║ ╚████║
+╚═════╝ ╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+```
+
+<div align="center">
+
+[![Repo](https://img.shields.io/badge/github-codeAmani--Solutions%2Fdiagram--design-181717?style=for-the-badge&logo=github)](https://github.com/codeAmani-Solutions/diagram-design)
+[![Upstream](https://img.shields.io/badge/upstream-cathrynlavery%2Fdiagram--design-555?style=for-the-badge&logo=github)](https://github.com/cathrynlavery/diagram-design)
+
+![Version](https://img.shields.io/badge/version-2.3.0-blue)
+![Visibility](https://img.shields.io/badge/visibility-public-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-D97757?logo=claude&logoColor=white)
+![Agent Skill](https://img.shields.io/badge/Codex%20%7C%20Pi-agent_skill-111)
+![Output](https://img.shields.io/badge/output-HTML%20%2F%20SVG%20%2F%20PNG-E34F26?logo=html5&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12-3776AB?logo=python&logoColor=white)
+![CI](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
+![Gallery](https://img.shields.io/badge/gallery-GitHub_Pages-222?logo=githubpages&logoColor=white)
+
+</div>
+
+<p align="center"><img src="docs/readme-assets/hero.svg" alt="Diagram Design banner: editorial diagrams your designer won't hate" width="100%" /></p>
+
+> This is the codeAmani-Solutions fork of [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design). Install commands below point at upstream, which is where releases are published.
+
 # Diagram Design
 
 **Editorial diagrams your designer won't hate.**
@@ -297,6 +334,27 @@ Or just ask in natural language:
 Both formats are diagram-only — editorial cards and headers from `-full` variants aren't included. For a screenshot of the full editorial layout, use your browser's print-to-PDF or full-page screenshot. See [`skills/diagram-design/references/export.md`](skills/diagram-design/references/export.md) for the full procedure.
 
 For motion-enabled HTML, export the explicit final state: open `?motion=static`, wait for `document.fonts.ready`, and confirm the motion root has `data-frame="static"` before capture. Use `?motion=step&step=N` only when a named intermediate frame was requested.
+
+---
+
+## How it works
+
+```mermaid
+flowchart LR
+    U["You: 'make me an architecture diagram'"] --> A["Agent (Claude Code / Codex / Pi)"]
+    A --> S["SKILL.md: philosophy + selection guide"]
+    S --> T["One type reference, e.g. type-architecture.md"]
+    S -. "only if needed" .-> X["semantic-patterns / animation / primitives"]
+    SG["style-guide.md (brand tokens)"] --> O
+    ON["Onboarding: website URL"] -->|"extract colors + fonts"| SG
+    I["Import: .drawio / .mmd"] -->|"extract to IR"| S
+    T --> O["Standalone HTML + inline SVG"]
+    X --> O
+    O --> C["self_check.py"]
+    O --> E["Export: SVG / PNG"]
+```
+
+Only the reference for the chosen type is loaded; the brand tokens come from one style guide that onboarding can fill from your own site.
 
 ---
 
